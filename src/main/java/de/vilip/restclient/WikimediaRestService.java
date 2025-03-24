@@ -8,7 +8,7 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 
 @Path("/feed/v1/wikipedia")
-@RegisterRestClient(configKey = "wikimedia")
+@RegisterRestClient(configKey = "wikimedia", baseUri = "https://api.wikimedia.org")
 public interface WikimediaRestService
 {
 	@GET
