@@ -52,17 +52,25 @@
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-oidc-client</artifactId>
         </dependency>
-        <!-- LangChain4j .-->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-scheduler</artifactId>
+        </dependency>
         <dependency>
             <groupId>io.quarkiverse.langchain4j</groupId>
-            <artifactId>quarkus-langchain4j-ollama</artifactId>
-            <version>0.26.0.CR2</version>
+            <artifactId>quarkus-langchain4j-openai</artifactId>
+            <version>0.26.0</version>
         </dependency>
         <!-- 3rd party -->
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.cosium.matrix_communication_client</groupId>
+            <artifactId>matrix-communication-client</artifactId>
+            <version>1.9</version>
         </dependency>
         <!-- Testing -->
         <dependency>
