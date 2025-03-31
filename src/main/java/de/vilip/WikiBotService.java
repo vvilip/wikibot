@@ -9,7 +9,6 @@ import de.vilip.matrix.MatrixService;
 import de.vilip.restclient.ResponseJSONProcessor;
 import de.vilip.restclient.WikimediaRestService;
 import de.vilip.utils.DateUtils;
-import io.quarkus.oidc.client.OidcClient;
 import io.quarkus.oidc.client.Tokens;
 import io.quarkus.scheduler.Scheduled;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -22,7 +21,7 @@ public class WikiBotService
 	private static final Logger log = LoggerFactory.getLogger(WikiBotService.class);
 
 	@Inject
-	OidcClient oidcClient;
+	Tokens tokens;
 
 	@RestClient
 	WikimediaRestService wikimediaRestService;
@@ -53,7 +52,6 @@ public class WikiBotService
 
 	private String getArticle()
 	{
-		Tokens tokens = oidcClient.getTokens().await().indefinitely();
 		return wikimediaRestService.getFeaturedPage(ENGLISH,
 			DateUtils.getCurrentYear(), DateUtils.getCurrentMonth(),
 			DateUtils.getCurrentDay(), tokens.getAccessToken());
