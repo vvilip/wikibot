@@ -40,7 +40,9 @@ public class WikiBotService
 	void sendMessage()
 	{
 		log.info("Start fetching article...");
-		matrixService.sendMessage(summarizeArticle(getArticle()));
+		String rawArticle = getArticle();
+		String summarizedArticle = summarizeArticle(rawArticle);
+		matrixService.sendMessage(summarizedArticle);
 	}
 
 	private String summarizeArticle(String article)
