@@ -11,6 +11,8 @@ import jakarta.enterprise.context.ApplicationScoped;
 @ApplicationScoped
 public class MatrixService
 {
+	private final MatrixResources MATRIX_RESOURCES = createMatrixResources();
+
 	@ConfigProperty(name = "de.vilip.matrix.hostname")
 	String homeServer;
 
@@ -25,7 +27,7 @@ public class MatrixService
 
 	public void sendMessage(String message)
 	{
-		RoomResource room = getRoom(createMatrixResources());
+		RoomResource room = getRoom(MATRIX_RESOURCES);
 		room.sendMessage(Message.builder().body(message).build());
 	}
 
