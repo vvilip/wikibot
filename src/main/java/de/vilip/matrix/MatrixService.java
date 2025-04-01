@@ -6,12 +6,13 @@ import com.cosium.matrix_communication_client.MatrixResources;
 import com.cosium.matrix_communication_client.Message;
 import com.cosium.matrix_communication_client.RoomResource;
 
+import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
 public class MatrixService
 {
-	private final MatrixResources MATRIX_RESOURCES = createMatrixResources();
+	private MatrixResources matrixResource;
 
 	@ConfigProperty(name = "de.vilip.matrix.hostname")
 	String homeServer;
@@ -25,9 +26,15 @@ public class MatrixService
 	@ConfigProperty(name = "de.vilip.matrix.room-id")
 	String roomId;
 
+	@PostConstruct
+	private void initializeMatrixResource()
+	{
+		matrixResource = createMatrixResources();
+	}
+
 	public void sendMessage(String message)
 	{
-		RoomResource room = getRoom(MATRIX_RESOURCES);
+		RoomResource room = getRoom(matrixResource);
 		room.sendMessage(Message.builder().body(message).build());
 	}
 
