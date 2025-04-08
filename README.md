@@ -19,7 +19,13 @@ A simple Matrix bot that summarizes the daily featured Wikipedia article in a co
 
 3. The summarization gets sent via Matrix to any chatroom
 
-<b>How to use the Wikibot: </b>
+<b>  Get the image </b>:
+
+```
+docker pull ghcr.io/vvilip/wikibot:latest
+```
+
+<b>Run it locally: </b>
 
 1. Create an account at [Wikimedia](https://api.wikimedia.org/wiki/Main_Page)
 2. For authentication create a client secret & id
